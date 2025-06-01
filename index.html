@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evoke Escape | Travel Booking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Evoke Escape</div>
+    <nav>
+      <a href="#flights" onclick="showTab('flights')">Flights</a>
+      <a href="#buses" onclick="showTab('buses')">Buses</a>
+      <a href="#trains" onclick="showTab('trains')">Trains</a>
+      <a href="#hotels" onclick="showTab('hotels')">Hotels</a>
+      <a href="#cruises" onclick="showTab('cruises')">Cruises</a>
+      <a href="#tours" onclick="showTab('tours')">Tours</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h1>Book Your Journey with Ease</h1>
+    <p>Flights, Buses, Trains, Hotels, and more – all in one place.</p>
+  </section>
+
+  <section id="search" class="search-tabs">
+    <div class="tabs">
+      <button onclick="showTab('flights')">Flights</button>
+      <button onclick="showTab('buses')">Buses</button>
+      <button onclick="showTab('trains')">Trains</button>
+      <button onclick="showTab('hotels')">Hotels</button>
+      <button onclick="showTab('cruises')">Cruises</button>
+      <button onclick="showTab('tours')">Tours</button>
+    </div>
+
+    <div id="flights" class="tab-content">
+      <h2>Search Flights</h2>
+      <form>
+        <input type="text" placeholder="From" required />
+        <input type="text" placeholder="To" required />
+        <input type="date" required />
+        <button type="submit">Search Flights</button>
+      </form>
+    </div>
+
+    <div id="buses" class="tab-content" style="display:none;">
+      <h2>Search Buses</h2>
+      <form>
+        <input type="text" placeholder="From" required />
+        <input type="text" placeholder="To" required />
+        <input type="date" required />
+        <button type="submit">Search Buses</button>
+      </form>
+    </div>
+
+    <div id="trains" class="tab-content" style="display:none;">
+      <h2>Search Trains</h2>
+      <form>
+        <input type="text" placeholder="From" required />
+        <input type="text" placeholder="To" required />
+        <input type="date" required />
+        <button type="submit">Search Trains</button>
+      </form>
+    </div>
+
+    <div id="hotels" class="tab-content" style="display:none;">
+      <h2>Search Hotels</h2>
+      <form>
+        <input type="text" placeholder="Destination" required />
+        <input type="date" placeholder="Check-in" required />
+        <input type="date" placeholder="Check-out" required />
+        <button type="submit">Search Hotels</button>
+      </form>
+    </div>
+
+    <div id="cruises" class="tab-content" style="display:none;">
+      <h2>Search Cruises</h2>
+      <form>
+        <input type="text" placeholder="Destination" required />
+        <input type="date" required />
+        <button type="submit">Search Cruises</button>
+      </form>
+    </div>
+
+    <div id="tours" class="tab-content" style="display:none;">
+      <h2>Search Tours</h2>
+      <form>
+        <input type="text" placeholder="Destination" required />
+        <input type="date" required />
+        <button type="submit">Search Tours</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Evoke Escape. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => (tab.style.display = 'none'));
+      document.getElementById(tabId).style.display = 'block';
+    }
+
+    // Show flights tab by default on page load
+    showTab('flights');
+  </script>
+</body>
+</html>
