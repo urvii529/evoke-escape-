@@ -3,109 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Evoke Escape | Travel Booking</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Evoke Escape Travel</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    nav {
+      background-color: #2874f0;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h1, h2 {
+      color: #2874f0;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Evoke Escape</div>
-    <nav>
-      <a href="#flights" onclick="showTab('flights')">Flights</a>
-      <a href="#buses" onclick="showTab('buses')">Buses</a>
-      <a href="#trains" onclick="showTab('trains')">Trains</a>
-      <a href="#hotels" onclick="showTab('hotels')">Hotels</a>
-      <a href="#cruises" onclick="showTab('cruises')">Cruises</a>
-      <a href="#tours" onclick="showTab('tours')">Tours</a>
-    </nav>
-  </header>
 
-  <section id="home" class="hero">
-    <h1>Book Your Journey with Ease</h1>
-    <p>Flights, Buses, Trains, Hotels, and more – all in one place.</p>
-  </section>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="flight.html">Flight Booking</a>
+    <a href="train.html">Train Booking</a>
+    <a href="hotel.html">Hotel Booking</a>
+    <a href="cruise.html">Cruise Booking</a>
+    <a href="package.html">Packages</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
 
-  <section id="search" class="search-tabs">
-    <div class="tabs">
-      <button onclick="showTab('flights')">Flights</button>
-      <button onclick="showTab('buses')">Buses</button>
-      <button onclick="showTab('trains')">Trains</button>
-      <button onclick="showTab('hotels')">Hotels</button>
-      <button onclick="showTab('cruises')">Cruises</button>
-      <button onclick="showTab('tours')">Tours</button>
-    </div>
+  <main>
+    <section>
+      <h1>Welcome to Evoke Escape Travel Agency</h1>
+      <p>Your travel partner for flights, trains, hotels, cruises, and holiday packages. Book with ease and explore the world with us!</p>
+    </section>
 
-    <div id="flights" class="tab-content">
-      <h2>Search Flights</h2>
-      <form>
-        <input type="text" placeholder="From" required />
-        <input type="text" placeholder="To" required />
-        <input type="date" required />
-        <button type="submit">Search Flights</button>
-      </form>
-    </div>
+    <section>
+      <h2>Flight Booking</h2>
+      <p><a href="flight.html">Book your flights here</a></p>
+    </section>
 
-    <div id="buses" class="tab-content" style="display:none;">
-      <h2>Search Buses</h2>
-      <form>
-        <input type="text" placeholder="From" required />
-        <input type="text" placeholder="To" required />
-        <input type="date" required />
-        <button type="submit">Search Buses</button>
-      </form>
-    </div>
+    <section>
+      <h2>Train Booking</h2>
+      <p><a href="train.html">Book your train tickets here</a></p>
+    </section>
 
-    <div id="trains" class="tab-content" style="display:none;">
-      <h2>Search Trains</h2>
-      <form>
-        <input type="text" placeholder="From" required />
-        <input type="text" placeholder="To" required />
-        <input type="date" required />
-        <button type="submit">Search Trains</button>
-      </form>
-    </div>
+    <section>
+      <h2>Hotel Booking</h2>
+      <p><a href="hotel.html">Find your perfect stay here</a></p>
+    </section>
 
-    <div id="hotels" class="tab-content" style="display:none;">
-      <h2>Search Hotels</h2>
-      <form>
-        <input type="text" placeholder="Destination" required />
-        <input type="date" placeholder="Check-in" required />
-        <input type="date" placeholder="Check-out" required />
-        <button type="submit">Search Hotels</button>
-      </form>
-    </div>
+    <section>
+      <h2>Cruise Booking</h2>
+      <p><a href="cruise.html">Explore cruise options here</a></p>
+    </section>
 
-    <div id="cruises" class="tab-content" style="display:none;">
-      <h2>Search Cruises</h2>
-      <form>
-        <input type="text" placeholder="Destination" required />
-        <input type="date" required />
-        <button type="submit">Search Cruises</button>
-      </form>
-    </div>
+    <section>
+      <h2>Holiday Packages</h2>
+      <p><a href="package.html">Check out our travel packages</a></p>
+    </section>
+  </main>
 
-    <div id="tours" class="tab-content" style="display:none;">
-      <h2>Search Tours</h2>
-      <form>
-        <input type="text" placeholder="Destination" required />
-        <input type="date" required />
-        <button type="submit">Search Tours</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Evoke Escape. All Rights Reserved.</p>
-  </footer>
-
-  <script>
-    function showTab(tabId) {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => (tab.style.display = 'none'));
-      document.getElementById(tabId).style.display = 'block';
-    }
-
-    // Show flights tab by default on page load
-    showTab('flights');
-  </script>
 </body>
 </html>

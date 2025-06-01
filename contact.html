@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Evoke Escape</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+    h2 { color: #2874f0; }
+    input, textarea, button {
+      width: 100%; padding: 10px; margin: 8px 0; box-sizing: border-box;
+      border: 1px solid #ccc; border-radius: 4px;
+    }
+    button {
+      background-color: #2874f0; color: white; border: none; cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover { background-color: #0056b3; }
+    .contact-info {
+      background: #f0f4ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .contact-info h3 {
+      margin-top: 0;
+      color: #2874f0;
+    }
+    .contact-info p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Contact Us</h2>
+
+  <div class="contact-info">
+    <h3>Evoke Escape Travel Agency</h3>
+    <p>📍 Address: Rajkot, Gujarat, near SRP Camp</p>
+    <p>📞 Phone: 9274057146, 9724238488</p>
+    <p>✉️ Email: evoke@evokeescape.com</p>
+  </div>
+
+  <form action="https://formsubmit.co/evoke@evokeescape.com" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <input type="text" name="subject" placeholder="Subject" required />
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_subject" value="New Contact Message" />
+  </form>
+</body>
+</html>
