@@ -3,84 +3,464 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Evoke Escape Travel</title>
+  <meta name="description" content="Evoke Escape - Explore the world with our customized travel packages. Book tours, flights, and hotels easily online." />
+  <title>Evoke Escape - Explore the World</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0; padding: 0;
+      color: #333;
+      background: #fff;
+    }
+    header {
+      background: #005f73;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      letter-spacing: 1.5px;
+    }
     nav {
-      background-color: #2874f0;
-      padding: 15px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 18px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
     }
     nav a:hover {
-      text-decoration: underline;
+      color: #ee6c4d;
     }
-    main {
+    .btn {
+      background: #ee6c4d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #d95a39;
+    }
+    /* Hamburger menu for mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      nav {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: #005f73;
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        height: calc(100vh - 60px);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      nav.open {
+        transform: translateX(0);
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0 0 10px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    /* Search Bar */
+    .search-bar {
+      background: #fafafa;
       padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
       max-width: 900px;
+      margin: -50px auto 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      position: relative;
+      z-index: 10;
+    }
+    .search-bar select, .search-bar input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      min-width: 150px;
+    }
+    .search-bar input[type="number"] {
+      max-width: 100px;
+    }
+
+    /* Tours Section */
+    .tours {
+      padding: 40px 20px;
+      max-width: 1200px;
       margin: auto;
     }
-    section {
+    .tours h2 {
+      text-align: center;
       margin-bottom: 40px;
+      font-size: 2rem;
+      color: #005f73;
     }
-    h1, h2 {
-      color: #2874f0;
+    .tour-cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-    p {
-      font-size: 16px;
-      line-height: 1.5;
+    .tour-card {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s;
+    }
+    .tour-card:hover {
+      transform: translateY(-5px);
+    }
+    .tour-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .tour-content {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .tour-content h3 {
+      margin: 0 0 10px;
+      color: #333;
+    }
+    .tour-content p {
+      font-size: 0.9rem;
+      color: #666;
+      flex-grow: 1;
+    }
+    .price {
+      font-weight: 700;
+      margin: 10px 0;
+      color: #ee6c4d;
+      font-size: 1.1rem;
+    }
+
+    /* Why Choose Us */
+    .why-choose {
+      background: #f0f0f0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .why-choose h2 {
+      margin-bottom: 30px;
+      color: #005f73;
+    }
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .feature {
+      max-width: 200px;
+    }
+    .feature img {
+      width: 60px;
+      margin-bottom: 15px;
+    }
+    .feature h3 {
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .feature p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+    .testimonials h2 {
+      color: #005f73;
+      margin-bottom: 30px;
+    }
+    .testimonial {
+      margin-bottom: 25px;
+      font-style: italic;
+      color: #444;
+    }
+    .testimonial .author {
+      margin-top: 8px;
+      font-weight: 600;
+      color: #ee6c4d;
+    }
+
+    /* About Section */
+    .about {
+      max-width: 900px;
+      margin: 60px auto 40px;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .about h2 {
+      color: #005f73;
+      margin-bottom: 20px;
+    }
+    .about p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Booking Form */
+    form {
+      max-width: 500px;
+      margin: 20px auto 40px;
+      background: #fafafa;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+    form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #005f73;
+    }
+    form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    form button {
+      width: 100%;
+      padding: 12px;
+      background: #ee6c4d;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background: #d95a39;
+    }
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      margin: 20px auto;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 600;
+      max-width: 500px;
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="flight.html">Flight Booking</a>
-    <a href="train.html">Train Booking</a>
-    <a href="hotel.html">Hotel Booking</a>
-    <a href="cruise.html">Cruise Booking</a>
-    <a href="package.html">Packages</a>
-    <a href="contact.html">Contact Us</a>
+<header>
+  <div class="logo-text">Evoke Escape</div>
+  <nav id="nav-menu">
+    <a href="#tours">Tours</a>
+    <a href="#why-choose">Why Choose Us</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#about">About</a>
+    <a href="#booking-form" class="btn">Book Now</a>
   </nav>
+  <div class="hamburger" id="hamburger">
+    <div></div><div></div><div></div>
+  </div>
+</header>
 
-  <main>
-    <section>
-      <h1>Welcome to Evoke Escape Travel Agency</h1>
-      <p>Your travel partner for flights, trains, hotels, cruises, and holiday packages. Book with ease and explore the world with us!</p>
-    </section>
+<section class="hero">
+  <h1>Explore the World with Evoke Escape</h1>
+  <p>Your adventure starts here — Book customized tours & travel packages today!</p>
+</section>
 
-    <section>
-      <h2>Flight Booking</h2>
-      <p><a href="flight.html">Book your flights here</a></p>
-    </section>
+<section class="search-bar" aria-label="Travel Booking Search">
+  <select id="destination" required>
+    <option value="" disabled selected>Select Destination</option>
+    <option value="paris">Paris</option>
+    <option value="bali">Bali</option>
+    <option value="newyork">New York</option>
+    <option value="tokyo">Tokyo</option>
+  </select>
+  <input type="date" id="travel-date" required />
+  <input type="number" id="travelers" placeholder="Travelers" min="1" max="10" required />
+  <button class="btn" onclick="alert('Search functionality coming soon!')">Search</button>
+</section>
 
-    <section>
-      <h2>Train Booking</h2>
-      <p><a href="train.html">Book your train tickets here</a></p>
-    </section>
+<section id="tours" class="tours">
+  <h2>Popular Tours</h2>
+  <div class="tour-cards">
+    <div class="tour-card">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=60" alt="Paris Tour" />
+      <div class="tour-content">
+        <h3>Paris City Tour</h3>
+        <p>Experience the romantic city of Paris with guided tours and fine dining.</p>
+        <div class="price">$1200</div>
+      </div>
+    </div>
+    <div class="tour-card">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=60" alt="Bali Tour" />
+      <div class="tour-content">
+        <h3>Bali Beach Escape</h3>
+        <p>Relax on the beautiful beaches of Bali with our exclusive package.</p>
+        <div class="price">$900</div>
+      </div>
+    </div>
+    <div class="tour-card">
+      <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=600&q=60" alt="New York Tour" />
+      <div class="tour-content">
+        <h3>New York Explorer</h3>
+        <p>Discover the iconic landmarks and vibrant culture of NYC.</p>
+        <div class="price">$1100</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <h2>Hotel Booking</h2>
-      <p><a href="hotel.html">Find your perfect stay here</a></p>
-    </section>
+<section id="why-choose" class="why-choose">
+  <h2>Why Choose Evoke Escape?</h2>
+  <div class="features">
+    <div class="feature">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Best Price" />
+      <h3>Best Price Guarantee</h3>
+      <p>We offer competitive pricing and great deals for your dream vacation.</p>
+    </div>
+    <div class="feature">
+      <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="24/7 Support" />
+      <h3>24/7 Customer Support</h3>
+      <p>Our team is always available to assist you at every step.</p>
+    </div>
+    <div class="feature">
+      <img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" alt="Customized Tours" />
+      <h3>Customized Tours</h3>
+      <p>Tailored travel packages to suit your preferences and budget.</p>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <h2>Cruise Booking</h2>
-      <p><a href="cruise.html">Explore cruise options here</a></p>
-    </section>
+<section id="testimonials" class="testimonials">
+  <h2>What Our Travelers Say</h2>
+  <div class="testimonial">
+    <p>"Evoke Escape made our honeymoon unforgettable. Great service and amazing tours!"</p>
+    <div class="author">- Sarah K.</div>
+  </div>
+  <div class="testimonial">
+    <p>"Easy booking process and excellent support throughout our trip."</p>
+    <div class="author">- Michael D.</div>
+  </div>
+  <div class="testimonial">
+    <p>"Highly recommend Evoke Escape for anyone looking for hassle-free travel."</p>
+    <div class="author">- Priya S.</div>
+  </div>
+</section>
 
-    <section>
-      <h2>Holiday Packages</h2>
-      <p><a href="package.html">Check out our travel packages</a></p>
-    </section>
-  </main>
+<section id="about" class="about">
+  <h2>About Evoke Escape</h2>
+  <p>Evoke Escape is dedicated to providing personalized travel experiences worldwide. We combine expert knowledge and passion for travel to create unforgettable journeys for our customers.</p>
+</section>
 
-</body>
-</html>
+<section id="booking-form">
+  <form id="travel-booking-form">
+    <h2>Book Your Tour</h2>
+    <label for="full-name">Full Name</label>
+    <input type="text" id="full-name" name="full-name" required />
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit number" />
+
+    <label for="destination-booking">Destination</label>
+    <select id="destination-booking" name="destination-booking" required>
+      <option value="" disabled selected>Select Destination</option>
+      <option value="paris">Paris</option>
+      <option value="bali">Bali</option>
+      <option value="newyork">New York</option>
+      <option value="tokyo">Tokyo</option>
+    </select>
+
+    <label for="date-booking">Travel Date</label>
+    <input type="date" id="date-booking" name="date-booking" required />
+
+    <label for="travelers-booking">Number of Travelers</label>
+    <input
